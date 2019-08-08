@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start_date: 2019-08-08
+  completed_date: 2019-08-08
+  status: 1
+  estimation_in_hours: 1
+  created_by: 1
+  project: one
+
+two:
+  name: MyString
+  start_date: 2019-08-08
+  completed_date: 2019-08-08
+  status: 1
+  estimation_in_hours: 1
+  created_by: 1
+  project: two

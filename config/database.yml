@@ -1,0 +1,28 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: todo_development
+  pool: 5
+  username: root
+  password: 12345678
+  adapter: mysql2
+test:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: todo_test
+  pool: 5
+  username: root
+  password: 12345678
+  adapter: mysql2
+
+production:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: todo_production
+  pool: 5
+  username: root
+  password: 12345678
+  adapter: mysql2
