@@ -5,6 +5,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all
+    @developers = User.developers
   end
 
   def show

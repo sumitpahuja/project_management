@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_191754) do
+ActiveRecord::Schema.define(version: 2019_08_08_200035) do
 
   create_table "developers_projects", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "developer_id", null: false
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2019_08_08_191754) do
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "developer_id"
+    t.index ["developer_id"], name: "index_tasks_on_developer_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
