@@ -22,19 +22,18 @@
               <th>Start date</th>
               <th>Completed date</th>
               <th>Status</th>
-              <th colspan="3">Action</th>
+              <th>Assigned To</th>
             </tr>
           </thead>
           <tbody>
           <% @tasks.each do |task| %>            
             <tr>
-              <td><%= task.name.try(:capitalize) %></td>
-              <td><%= task.project.name.try(:capitalize) %></td>
-              <td><%= task.start_date %></td>
-              <td><%= task.completed_date %></td>
-              <td><%= task.status.try(:capitalize)  %></td>
-              <td><%= link_to 'Edit', edit_task_path(task) %></td>
-              <td><%= link_to 'Manage Team', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>              
+              <td><%= best_in_place task, :name, as: :input %>      <i class="fa fa-pencil"></i></td>
+              <td><%= task.project.name %> </td>
+              <td><%= best_in_place task, :start_date, as: :date, format: 'yy-mm-dd' %>    <i class="fa fa-pencil"></i></td>
+              <td><%= best_in_place task, :completed_date, as: :date, format: 'yy-mm-dd' %>    <i class="fa fa-pencil"></i></td>
+              <td><%= best_in_place task, :status, :as => :select, :collection => {"unstarted" => "Unstarted", "inprogress" => "InProgress", "completed" => "Completed", "rejected" => "Rejected", "accepted" => "Accepted"} %>     <i class="fa fa-pencil"></i></td>
+              <td>Developer Name </td>              
             </tr>
           <% end %>  
           </tbody>

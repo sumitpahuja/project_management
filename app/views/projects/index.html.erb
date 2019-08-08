@@ -22,6 +22,7 @@
               <th>Completed date</th>
               <th>Status</th>
               <th>Action</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -29,9 +30,10 @@
             <tr>
               <td><%= best_in_place project, :name, as: :input %>      <i class="fa fa-pencil"></i></td>
               <td><%= best_in_place project, :start_date, as: :date, format: 'yy-mm-dd' %>    <i class="fa fa-pencil"></i></td>
-              <td><%= project.completed_date %></td>
+              <td><%= best_in_place project, :completed_date, as: :date, format: 'yy-mm-dd' %>    <i class="fa fa-pencil"></i></td>
               <td><%= best_in_place project, :status, :as => :select, :collection => {"pending" => "pending", "inprogress" => "InProgress", "completed" => "Completed"} %>     <i class="fa fa-pencil"></i></td>
               <td> <%= link_to 'Manage Team', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td> <%= link_to 'Assign Tasks', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>  
           </tbody>
