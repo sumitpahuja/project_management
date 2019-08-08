@@ -36,6 +36,8 @@ gem 'gentelella-rails'
 # gem for inline edit
 gem 'best_in_place'
 
+gem 'jquery-ui-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

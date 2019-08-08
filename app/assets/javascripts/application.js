@@ -13,6 +13,7 @@
 
 //= require rails-ujs
 //= require jquery
+//= require jquery-ui
 //= require gentelella
 //= require gentelella-custom
 //= require activestorage
@@ -25,6 +26,13 @@
 $(document).ready(function() {
   /* Activating Best In Place */
   jQuery(".best_in_place").best_in_place();
+
+  jQuery(".fa-pencil").click(function () {
+  	$(this).siblings('span').click();
+  });
 });
 
 
+$.datepicker.setDefaults({
+    dateFormat: 'yy-mm-dd'
+});

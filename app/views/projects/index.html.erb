@@ -27,11 +27,11 @@
           <tbody>
           <% @projects.each do |project| %>            
             <tr>
-              <td><%= best_in_place project, :name, :as => :input %></td>
-              <td><%= project.start_date %></td>
+              <td><%= best_in_place project, :name, as: :input %>      <i class="fa fa-pencil"></i></td>
+              <td><%= best_in_place project, :start_date, as: :date, format: 'yy-mm-dd' %>    <i class="fa fa-pencil"></i></td>
               <td><%= project.completed_date %></td>
-              <td><%= best_in_place project, :status, :as => :select, :collection => {"pending" => "pending", "inprogress" => "InProgress", "completed" => "Completed"} %></td>
-              <td><%= link_to 'Edit', edit_project_path(project) %> | <%= link_to 'Manage Team', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= best_in_place project, :status, :as => :select, :collection => {"pending" => "pending", "inprogress" => "InProgress", "completed" => "Completed"} %>     <i class="fa fa-pencil"></i></td>
+              <td> <%= link_to 'Manage Team', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>  
           </tbody>
