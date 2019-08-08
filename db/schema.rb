@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_061923) do
+ActiveRecord::Schema.define(version: 2019_08_08_191754) do
+
+  create_table "developers_projects", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "developer_id", null: false
+    t.bigint "project_id", null: false
+    t.index ["developer_id", "project_id"], name: "index_developers_projects_on_developer_id_and_project_id"
+  end
 
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false

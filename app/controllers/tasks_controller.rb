@@ -12,13 +12,14 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @projects = Project.incompleted
   end
 
   def edit
   end
 
   def create
-    @task = task.new(task_params)
+    @task = Task.new(task_params)
 
     respond_to do |format|
       if @task.save
@@ -42,6 +43,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :start_date, :winner_team, :completed, participant_teams: [])
+      params.require(:task).permit(:name, :start_date, :winner_team, :completed, :project_id)
     end   
 end
