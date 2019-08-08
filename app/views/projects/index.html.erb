@@ -21,18 +21,17 @@
               <th>Start date</th>
               <th>Completed date</th>
               <th>Status</th>
-              <th colspan="2">Action</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
           <% @projects.each do |project| %>            
             <tr>
-              <td><%= best_in_place project, :name, :as => :input,tabindex: "1"%></td>
+              <td><%= best_in_place project, :name, :as => :input %></td>
               <td><%= project.start_date %></td>
               <td><%= project.completed_date %></td>
               <td><% if project.status == 'completed' %> Completed <% else %> In Progress <% end %></td>
-              <td><%= link_to 'Edit', edit_project_path(project) %></td>
-              <td><%= link_to 'Manage Team', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>              
+              <td><%= link_to 'Edit', edit_project_path(project) %> | <%= link_to 'Manage Team', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>  
           </tbody>

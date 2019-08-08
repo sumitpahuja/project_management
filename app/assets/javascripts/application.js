@@ -13,14 +13,18 @@
 
 //= require rails-ujs
 //= require jquery
+//= require gentelella
+//= require gentelella-custom
 //= require activestorage
 //= require turbolinks
-//= require gentelella
-//= require jquery.purr
 //= require best_in_place
 //= require best_in_place.jquery-ui
+
+//= require jquery.purr
 
 $(document).ready(function() {
   /* Activating Best In Place */
   jQuery(".best_in_place").best_in_place();
 });
+
+
