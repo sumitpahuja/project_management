@@ -6,5 +6,5 @@ class Project < ApplicationRecord
 
   validates :name, :start_date, presence: true
   
-  enum status: [:inprogress, :completed]
+  enum status: [:pending, :inprogress, :completed]
 end

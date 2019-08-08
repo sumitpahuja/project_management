@@ -30,7 +30,7 @@
               <td><%= best_in_place project, :name, :as => :input %></td>
               <td><%= project.start_date %></td>
               <td><%= project.completed_date %></td>
-              <td><% if project.status == 'completed' %> Completed <% else %> In Progress <% end %></td>
+              <td><%= best_in_place project, :status, :as => :select, :collection => {"pending" => "pending", "inprogress" => "InProgress", "completed" => "Completed"} %></td>
               <td><%= link_to 'Edit', edit_project_path(project) %> | <%= link_to 'Manage Team', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>  
