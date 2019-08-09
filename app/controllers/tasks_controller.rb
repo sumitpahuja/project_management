@@ -5,7 +5,11 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all
-    @developers = User.developers
+    developers = User.developers
+    @developers = {}
+    developers.each do |dev|
+      @developers[dev.id] = dev.fullname
+    end
   end
 
   def show
@@ -14,6 +18,7 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @projects = Project.incompleted
+    @developers = User.developers
   end
 
   def edit
@@ -44,6 +49,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :start_date, :winner_team, :completed, :project_id)
+      params.require(:task).permit(:name, :start_date, :winner_team, :completed, :project_id, :developer_id)
     end   
 end
