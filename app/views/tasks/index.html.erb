@@ -22,18 +22,24 @@
               <th>Start date</th>
               <th>Completed date</th>
               <th>Status</th>
-              <th>Assigned To</th>
+              <% if @admin %><th>Assigned To</th><% end %>
             </tr>
           </thead>
           <tbody>
           <% @tasks.each do |task| %>            
             <tr>
-              <td><%= best_in_place task, :name, as: :input %>      <i class="fa fa-pencil"></i></td>
+              <% if @admin %>
+                <td><%= best_in_place task, :name, as: :input %>      <i class="fa fa-pencil"></i></td>
+              <% else %>
+                <td><%= task.name %></td>
+              <% end %>
               <td><%= task.project.name %> </td>
               <td><%= best_in_place task, :start_date, as: :date, format: 'yy-mm-dd' %>    <i class="fa fa-pencil"></i></td>
-              <td><%= best_in_place task, :completed_date, as: :date, format: 'yy-mm-dd' %>    <i class="fa fa-pencil"></i></td>
-              <td><%= best_in_place task, :status, :as => :select, :collection => {"unstarted" => "Unstarted", "inprogress" => "InProgress", "completed" => "Completed", "rejected" => "Rejected", "accepted" => "Accepted"} %>     <i class="fa fa-pencil"></i></td>
-              <td><%= best_in_place task, :developer_id, :as => :select, :collection => @developers %>     <i class="fa fa-pencil"></i></td>              
+              <td><%= task.completed_date %> </td>
+              <td><%= best_in_place task, :status, :as => :select, :collection => @status %>     <i class="fa fa-pencil"></i></td>
+              <% if @admin %>
+                <td><%= best_in_place task, :developer_id, :as => :select, :collection => @developers %>     <i class="fa fa-pencil"></i></td>              
+              <% end %>
             </tr>
           <% end %>  
           </tbody>

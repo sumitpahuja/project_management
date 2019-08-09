@@ -6,6 +6,9 @@ class TasksController < ApplicationController
   def index
     @tasks = developer? ? current_user.tasks : Task.all
     @developers = User.developer_names
+    role = current_user.role_name.upcase + "_STATUS"
+    @status = {}
+    Task.const_get(role).each {|status| @status[status] = status.capitalize }
   end
 
   def show
@@ -45,6 +48,10 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :start_date, :winner_team, :completed, :project_id, :developer_id)
+      if current_user.has_role? :admin
+        params.require(:task).permit(:name, :start_date, :completed_date, :project_id, :developer_id, :estimation_in_hours, :status)
+      else
+        params.require(:task).permit(:start_date, :status)
+      end      
     end   
 end

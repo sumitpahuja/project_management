@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
 
   def index
+      # @project is already loaded by cancancan gem, so no need to fetch again.
       # @projects = Project.all
   end
 

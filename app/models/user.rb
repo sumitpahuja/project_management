@@ -23,4 +23,9 @@ class User < ApplicationRecord
     (devs.all.pluck(:id, :fullname).map { |id, fullname| { id => fullname } }).inject(:merge)
   end
 
+
+  def role_name
+    roles.first.try(:name)
+  end
+
 end
