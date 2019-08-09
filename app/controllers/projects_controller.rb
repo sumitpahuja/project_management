@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   respond_to :html, :json
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :manage_team]
 
 
   def index
@@ -32,9 +32,21 @@ class ProjectsController < ApplicationController
   end  
 
   def update
-    @project.update_attributes(project_params)
-    respond_with @project
+    respond_to do |format|
+      if @project.update_attributes(project_params)
+        format.html { redirect_to projects_path, notice: 'Project was successfully updated.' }
+        format.json {render json: {}, status: 200}
+      else
+        format.html { render :manage_team }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end    
   end  
+
+  def manage_team
+    @developers = User.developers
+    @project_developers = @project.team_members
+  end
 
   private
     def set_project
@@ -42,6 +54,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:name, :start_date, :description, :completed_date, :status, :created_by)
+      params.require(:project).permit(:name, :start_date, :description, :completed_date, :status, :created_by, team_member_ids: [])
     end  
 end

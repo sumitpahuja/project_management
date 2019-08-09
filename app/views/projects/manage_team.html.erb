@@ -1,0 +1,43 @@
+<h1>Manage Team for <%= @project.name.try(:capitalize) %> Project</h1>
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <br />
+        <h3> Select Team </h3>
+        <%= form_with(model: @project, local: true, id: 'form2', class: 'form-horizontal form-label-left') do |form| %>
+          <% if @project.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+              <ul>
+              <% @project.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>     
+
+          <% @developers.each do |dev| %>
+          <div class="checkbox">
+            <label>
+              <%= check_box_tag "project[team_member_ids][]", dev.id, @project.team_member_ids.include?(dev.id) %>
+              <%= dev.fullname %>
+            </label>
+          </div>  
+          <% end %>            
+
+          <div class="ln_solid"></div>
+          <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+              <button class="btn btn-primary" type="reset">Reset</button>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= link_to 'Back', projects_path %>
