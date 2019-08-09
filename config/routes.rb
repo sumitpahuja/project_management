@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :tasks do
     collection do
       get :developers_task_status
+      get :projects_tasks_status
     end
   end
 

@@ -8,6 +8,16 @@ class Project < ApplicationRecord
 
   #all validations
   validates :name, :start_date, presence: true
+
+  #callbacks
+  before_destroy :clear_team_members
   
   enum status: [:pending, :inprogress, :completed]
+
+
+  private
+
+  def clear_team_members
+    self.team_member_ids = []
+  end
 end

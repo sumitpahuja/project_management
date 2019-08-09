@@ -36,3 +36,5 @@ $(document).ready(function() {
 $.datepicker.setDefaults({
     dateFormat: 'yy-mm-dd'
 });
+
+$('table').dataTable({searching: false, paging: false, info: false});

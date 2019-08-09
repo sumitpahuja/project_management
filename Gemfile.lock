@@ -96,6 +96,8 @@ GEM
       warden (~> 1.2.3)
     erubi (1.8.0)
     execjs (2.7.0)
+    faker (2.1.0)
+      i18n (>= 0.7)
     fastclick-rails (1.0.1)
     ffi (1.11.1)
     flot-rails (0.0.7)
@@ -267,6 +269,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  faker
   gentelella-rails
   jbuilder (~> 2.5)
   jquery-ui-rails

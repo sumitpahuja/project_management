@@ -54,6 +54,18 @@ class TasksController < ApplicationController
     end
   end 
 
+  def projects_tasks_status
+    @project_status = {}
+    @projects = Project.all
+    @projects.each do |project|
+      @project_status[project.id] = {unstarted: [], inprogress: [], completed: [] }
+    end
+    tasks = Task.all
+    tasks.each do |task|
+      @project_status[task.project_id][task.status.to_sym] << task.name 
+    end    
+  end
+
   private
     def set_task
       @task = Task.find(params[:id])
