@@ -40,7 +40,19 @@ class TasksController < ApplicationController
   def update
     @task.update_attributes(task_params)
     respond_with @task
-  end      
+  end     
+
+  def developers_task_status
+    @developers_status = {}
+    @developers = User.developers
+    @developers.each do |user|
+      @developers_status[user.id] = {unstarted: [], inprogress: [], completed: [] }
+    end
+    tasks = Task.where("developer_id is not null")
+    tasks.each do |task|
+      @developers_status[task.developer_id][task.status.to_sym] << task.name 
+    end
+  end 
 
   private
     def set_task

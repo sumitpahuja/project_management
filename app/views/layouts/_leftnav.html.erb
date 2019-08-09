@@ -26,6 +26,8 @@
         <ul class="nav child_menu">
          <% if @admin %> <li><%= link_to 'Projects', projects_path %></li><% end %>
           <% if @admin %><li><%= link_to 'Tasks', tasks_path %></li><% end %>
+          <% if @admin %><li><%= link_to 'Developers Work Status', {controller: 'tasks', action: 'developers_task_status'} %></li><% end %>
+          <% if @admin %><li><%= link_to 'Projects Tasks Status', tasks_path %></li><% end %>
           <% unless @admin %><li><%= link_to 'My Tasks', tasks_path %></li><% end %>
         </ul>
       </li>
