@@ -4,12 +4,8 @@ class TasksController < ApplicationController
 
 
   def index
-    @tasks = Task.all
-    developers = User.developers
-    @developers = {}
-    developers.each do |dev|
-      @developers[dev.id] = dev.fullname
-    end
+    @tasks = developer? ? current_user.tasks : Task.all
+    @developers = User.developer_names
   end
 
   def show

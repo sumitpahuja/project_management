@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
   respond_to :html, :json
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :manage_team]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :manage_team, :assign_tasks]
+  load_and_authorize_resource
 
 
   def index
-    @projects = Project.all
+      # @projects = Project.all
   end
 
   def show
@@ -46,6 +47,12 @@ class ProjectsController < ApplicationController
   def manage_team
     @developers = User.developers
     @project_developers = @project.team_members
+  end
+
+  def assign_tasks
+    @tasks = @project.tasks
+    @developers = User.developer_names(@project.team_members)
+    render "tasks/index"
   end
 
   private

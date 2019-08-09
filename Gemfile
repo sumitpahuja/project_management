@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 
-gem 'cancan'
+gem 'cancancan'
 
 gem 'rolify'
 

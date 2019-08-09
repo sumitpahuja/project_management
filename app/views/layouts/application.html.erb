@@ -10,6 +10,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': false %>
 
+    <style>
+      /*Devise flash*/
+      .alert-error {
+        background-color: #f2dede;
+        border-color: #eed3d7;
+        color: #b94a48;
+        text-align: center;
+      }
+      .alert-alert {
+        background-color: #f2dede;
+        border-color: #eed3d7;
+        color: #b94a48;
+        text-align: center;
+      }
+      .alert-notice {
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+        color: #468847;
+        text-align: left;
+      }
+    </style>
     <title><%= yield :title %></title>
 
   </head>
@@ -35,8 +56,16 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-        <h2> <p class="notice"><%= notice %></p></h2>
-         <h2><p class="alert"><%= alert %></p>          </h2>
+        <% flash.each do |key, value| %>
+            <div align="center" id="flash" class="alert alert-<%= key %>">
+              <a href="#" data-dismiss="alert" class="close">×</a>
+              <ul style="text-align: center">
+                <l>
+                <b> <%= value %>  </b>
+                </l>
+              </ul>
+            </div>
+        <% end %>
           <%= yield %>
         </div>
         <!-- /page content -->

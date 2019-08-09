@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   rolify
   ROLES = %w[admin developer].freeze
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -19,5 +18,9 @@ class User < ApplicationRecord
     scope "#{role.downcase}s", -> { Role.find_by_name(role).users rescue [] }
     scope "#{role.downcase}_count", -> { Role.find_by_name(role).users.count rescue 0 }
   end  
+
+  def self.developer_names(devs = developers)
+    (devs.all.pluck(:id, :fullname).map { |id, fullname| { id => fullname } }).inject(:merge)
+  end
 
 end
