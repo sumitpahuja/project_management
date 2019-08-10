@@ -1,8 +1,8 @@
-<%# views/devise/sessions/new.html.erb %>
 
-<div class="">
-  <div id="wrapper">
-    <div id="login" class="animate form">
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div id="login" class="col-md-4 col-sm-4 col-xs-4">
       <section class="login_content">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <h1>Login Form</h1>
@@ -16,26 +16,16 @@
 
           </div>
 
-
-            <% if devise_mapping.rememberable? -%>
-                <div class="checkbox-inline">
-                  <%= f.check_box :remember_me %>
-                  <%= f.label :remember_me %>
-                </div>
-            <% end -%>
-
-
             <div>
 
             <%= f.submit "Log in", :class => "btn btn-default submit"%>
 
-            <a class="reset_pass" href="#">Lost your password?</a>
           </div>
           <div class="clearfix"></div>
           <div class="separator">
 
             <p class="change_link">New to site?
-              <a href="#toregister" class="to_register"> Create Account </a>
+              <a href="/users/sign_up" class="to_register"> Create Account </a>
             </p>
             <div class="clearfix"></div>
             <br />
