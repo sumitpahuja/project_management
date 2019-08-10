@@ -16,14 +16,14 @@ if User.find_by_email('developer@gmail.com').blank?
   u.save
 end
 
-if User.developers.count < 1
+if User.developers.count < 2
   (1..3).each do |i|
     User.create(email: Faker::Internet.email , password: 123456, fullname: Faker::Name.name )
   end
 end
 
 if Project.count < 1
-  (1..2).each do |i|
+  (1..3).each do |i|
     proj = Project.create(name: Faker::Company.industry, start_date: Date.today + 4.day)
     proj.team_member_ids = User.developers.collect(&:id)
   end
@@ -47,7 +47,9 @@ if Task.where(status: :inprogress).count < 1
 end
 
 if Task.where(status: :completed).count < 1
-  User.developers.each do |user|
-    task = user.tasks.last.update(status: :completed)
+  Project.all.each do |p|
+    User.developers.each do |user|
+      task = user.tasks.where(project_id: p.id).last.update(status: :completed)
+    end
   end
 end
