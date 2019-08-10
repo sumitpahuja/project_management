@@ -8,7 +8,7 @@
         <% status = { "unstarted"=>0, "inprogress"=>0, "completed"=>0} %>
         google.charts.setOnLoadCallback(drawChart("project<%= key %>", <%= status.merge!(value.to_h).to_a.to_json.html_safe %>, "<%= @proj[key] %>"));
       <% end %>
-      }, 3000);
+      }, 1000);
       // Callback that draws the pie chart for Sarah's pizza.
       function drawChart(projectId, proj_data, proj_name) {
         // Create the data table for Sarah's pizza.
@@ -43,7 +43,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>All Projects with tasks: </h2>
+          <h2>Project Growth Status: </h2>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">    

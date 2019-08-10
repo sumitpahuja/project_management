@@ -2,6 +2,12 @@ Project Management Application:
 
 This application will help you in managing projects. Project manager can create new projects, tasks and assign tasks to developers. Developer can update status of his/her tasks.
 
+Project manager can also check graphical representation of projects status and also developers tasks status.
+
+<div align="center">
+    <img src="/graph.png" width="400px"</img> 
+</div>
+
 For this project, we need below technology stack:
 Ruby Version: 2.4.0
 Rails Version: 5.2.3
