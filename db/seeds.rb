@@ -13,7 +13,6 @@ end
 
 if User.find_by_email('developer@gmail.com').blank?
   u = User.new(email: 'developer@gmail.com', password: 123456, fullname: 'Sumit Pahuja')
-  u.add_role(:admin)
   u.save
 end
 
