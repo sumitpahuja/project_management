@@ -1,24 +1,40 @@
-# README
+Project Management Application:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application will help you in managing projects. Project manager can create new projects, tasks and assign tasks to developers. Developer can update status of his/her tasks.
 
-Things you may want to cover:
+For this project, we need below technology stack:
+Ruby Version: 2.4.0
+Rails Version: 5.2.3
+Database: MySql (version 8.0 will be best, lower version will also work.)
 
-* Ruby version
 
-* System dependencies
+Steps to setup this project:
 
-* Configuration
+1. Clone this project.
+2. Go inside project root on terminal.
+3. bundle install.
+4. rake db:create
+5. rake db:migrate
+6. rake db:seed
 
-* Database creation
+Steps to use this application:
+1. Go to "localhost:3000".
+2. To Sign-in as admin use these authentication details: "admin@gmail.com : 123456"
+3. After admin login - you can create project, tasks, assign tasks to developer and check status of developers work and project.
+4. To Sign-in as developer use these authentication details: "developer@gmail.com : 123456"
+5. After login as developer you can check your tasks and update status of your tasks.
 
-* Database initialization
 
-* How to run the test suite
+More:
 
-* Services (job queues, cache servers, search engines, etc.)
+To create a new admin user, you can use below rake task: 
+rake users:create_admin
 
-* Deployment instructions
+To create a new developer, you can sign up from below URL:
+http://localhost:3000/users/sign_up
 
-* ...
+
+
+
+Thanks
+sumit.pahuja1@gmail.com
