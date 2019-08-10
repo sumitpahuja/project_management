@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.has_role?(:admin)
-      root_path
+      projects_path
     elsif current_user.has_role?(:developer)
       root_path
     end

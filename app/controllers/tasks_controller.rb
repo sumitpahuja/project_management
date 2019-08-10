@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   respond_to :html, :json
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  skip_authorize_resource only: [:index, :update]
 
 
   def index

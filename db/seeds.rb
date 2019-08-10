@@ -11,6 +11,12 @@ if User.find_by_email('admin@gmail.com').blank?
   u.save
 end
 
+if User.find_by_email('developer@gmail.com').blank?
+  u = User.new(email: 'developer@gmail.com', password: 123456, fullname: 'Sumit Pahuja')
+  u.add_role(:admin)
+  u.save
+end
+
 if User.developers.count < 1
   (1..3).each do |i|
     User.create(email: Faker::Internet.email , password: 123456, fullname: Faker::Name.name )
@@ -26,8 +32,23 @@ end
 
 if Task.count < 1
   Project.all.each do |p|
-    (1..3).each do |i|
-      Task.create(name: Faker::Company.catch_phrase, project_id: p.id, developer_id: User.developers.sample.id)
-    end    
+    User.developers.each do |user|
+      (1..2).each do |i|
+        Task.create(name: Faker::Job.key_skill, project_id: p.id, developer_id: user.id)
+        Task.create(name: Faker::Job.key_skill, project_id: p.id, developer_id: user.id)
+      end
+    end
+  end
+end
+
+if Task.where(status: :inprogress).count < 1
+  User.developers.each do |user|
+    task = user.tasks.first.update(status: :inprogress)
+  end
+end
+
+if Task.where(status: :completed).count < 1
+  User.developers.each do |user|
+    task = user.tasks.last.update(status: :completed)
   end
 end
