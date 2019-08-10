@@ -56,6 +56,17 @@ class ProjectsController < ApplicationController
     render "tasks/index"
   end
 
+  def projects_status
+    tasks = Task.joins(:project).group('tasks.status', 'tasks.project_id').count
+    @projects = {}
+    tasks.each do |key,val| 
+      @projects[key[1]] ||= []
+      @projects[key[1]] << [key[0], val]
+    end
+    @proj = Project.find(@projects.keys).pluck(:id, :name).to_h
+  end
+
+
   private
     def set_project
       @project = Project.find(params[:id])

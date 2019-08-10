@@ -12,8 +12,9 @@ Rails.application.routes.draw do
       get :manage_team
       get :assign_tasks
     end
-    # collection do
-    # end
+    collection do
+      get :projects_status
+    end
   end    
 
   resources :tasks do
