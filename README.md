@@ -18,7 +18,7 @@ Steps to setup this project:
 6. rake db:seed
 
 Steps to use this application:
-1. Go to "localhost:3000".
+1. Go to "http://localhost:3000".
 2. To Sign-in as admin use these authentication details: "admin@gmail.com : 123456"
 3. After admin login - you can create project, tasks, assign tasks to developer and check status of developers work and project.
 4. To Sign-in as developer use these authentication details: "developer@gmail.com : 123456"
