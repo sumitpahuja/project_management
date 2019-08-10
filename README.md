@@ -9,9 +9,10 @@ Project manager can also check graphical representation of projects status and a
 </div>
 
 For this project, we need below technology stack:
-Ruby Version: 2.4.0
-Rails Version: 5.2.3
-Database: MySql (version 8.0 will be best, lower version will also work.)
+
+- Ruby Version: 2.4.0
+- Rails Version: 5.2.3
+- Database: MySql (version 8.0 will be best, lower version will also work.)
 
 
 Steps to setup this project:
