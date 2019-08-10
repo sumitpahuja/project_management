@@ -5,7 +5,7 @@ This application will help you in managing projects. Project manager can create 
 Project manager can also check graphical representation of projects status and also developers tasks status.
 
 <div align="center">
-    <img src="/graph.png" width="400px"</img> 
+    <img src="https://i.postimg.cc/pLbVh6NG/graph.png" width="400px"</img> 
 </div>
 
 For this project, we need below technology stack:
