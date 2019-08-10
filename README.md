@@ -35,10 +35,10 @@ Steps to use this application:
 More:
 
 To create a new admin user, you can use below rake task: 
--> rake users:create_admin
+- rake users:create_admin
 
 To create a new developer, you can sign up from below URL:
--> http://localhost:3000/users/sign_up
+- http://localhost:3000/users/sign_up
 
 
 
